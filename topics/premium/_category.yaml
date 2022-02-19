@@ -1,0 +1,8 @@
+title: Xenon Premium
+subtitle: Topics related to xenon premium
+description: |
+  Some test and **markdown**
+  `with line breaks`
+links:
+  - name: Docs
+    url: "https://wiki.xenon.bot"

@@ -1,7 +1,10 @@
-title: Backups
-text: |
-  Some test and **markdown**
-  `with line breaks`
+title: Server Backups
+subtitle: Topics related to server backups
+description: |
+  Backups are used to **save or duplicate your server**. 
+  They are linked to the user that created it, but not limited to a server. That means you can use backups to move, or duplicate a server.
+
+  Backups can contain channels, roles, server settings and even messages, bans, nicknames and role assignments if you have premium.
 links:
-  - name: Docs
-    url: "https://wiki.xenon.bot"
+  - name: Wiki
+    url: "https://wiki.xenon.bot/en/backups"

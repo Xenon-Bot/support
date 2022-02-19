@@ -15,8 +15,10 @@ import {
 
 interface Topic {
   title: string;
-  text: string;
+  subtitle?: string;
+  description: string;
   links?: { name: string; url: string }[];
+  image?: string;
 
   id: string;
   categoryId?: string;
@@ -42,17 +44,16 @@ function messageForTopic(
 
   return (
     <Message update={update} ephemeral={ephemeral}>
-      <Embed title={topic.title} color={0x478fce}>
-        {topic.text}
+      <Embed title={topic.title} color={0x478fce} image={topic.image}>
+        {topic.description}
       </Embed>
       <Row>
         <Button id={homeButton} primary>
-          Home
+          Go Home
         </Button>
-        {topic.links &&
-          topic.links.map((link) => (
-            <Button url={link.url}>{link.name}</Button>
-          ))}
+        {(topic.links || []).map((link) => (
+          <Button url={link.url}>{link.name}</Button>
+        ))}
       </Row>
       {children.length !== 0 && (
         <Select
@@ -62,7 +63,9 @@ function messageForTopic(
           placeholder="Select a topic ..."
         >
           {children.map((topic) => (
-            <Option value={topic.id}>{topic.title}</Option>
+            <Option value={topic.id} description={topic.subtitle}>
+              {topic.title}
+            </Option>
           ))}
         </Select>
       )}
@@ -82,10 +85,21 @@ function initialMessage(
 
   return (
     <Message ephemeral={ephemeral} update={update}>
-      <Embed title="Xenon Help Center" color={0x478fce}></Embed>
+      <Embed title="Xenon Help Center" color={0x478fce}>
+        {`
+        Welcome to the Xenon Help Center! 
+        
+        This is an **interactive FAQ** where you can find answers to common questions about Xenon. 
+        Use the Select Menu below to navigate through the FAQ. You can come back to this message at any point by clicking the "Home" button.
+        
+        *If you can't find the answer to your question please open an issue or pull request on [Github](https://github.com/Xenon-Bot/support).*
+        `}
+      </Embed>
       <Select id={topicSelect} min={1} max={1} placeholder="Select a topic ...">
         {topLevelTopics.map((topic) => (
-          <Option value={topic.id}>{topic.title}</Option>
+          <Option value={topic.id} description={topic.subtitle}>
+            {topic.title}
+          </Option>
         ))}
       </Select>
       {staticMenuButton && (
