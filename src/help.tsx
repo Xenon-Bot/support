@@ -29,8 +29,6 @@ import untypedTopics from "../topics";
 
 const topics: Record<string, Topic> = untypedTopics;
 
-console.log(topics);
-
 function messageForTopic(
   topic: Topic,
   update: boolean,

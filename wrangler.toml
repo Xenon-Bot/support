@@ -1,10 +1,10 @@
 name = "slshx-starter"
 type = "javascript"
 
-account_id = "" # TODO: add your Cloudflare account ID here
-workers_dev = true
-# route = ""
-# zone_id = ""
+account_id = "42459c568b12d0902eeac887235b0c41"
+workers_dev = false
+route = "support.xenon.bot/*"
+zone_id = "ba040eb427d023e4a612b0dd32e84fca"
 
 compatibility_date = "2021-12-27"
 compatibility_flags = []
