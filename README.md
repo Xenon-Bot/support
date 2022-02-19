@@ -13,8 +13,8 @@ One category / directory should not have more than 25 topics / files (excluding 
 Topics (and categories) **must** follow the following structure:
 
 ```yaml
-title: Some Topic # max. 50 chars
-subtitle: Som subtitle for the topic # optional; max. 50 chars
+title: Some Topic # max. 100 chars
+subtitle: Som subtitle for the topic # optional; max. 100 chars
 description: | # max. 4096 chars
   Some test and **markdown**
   `with line breaks`
