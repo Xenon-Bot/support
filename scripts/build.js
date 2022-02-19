@@ -1,5 +1,8 @@
 import { build } from "esbuild";
 import { env } from "./env.js";
+import fs from "fs";
+import path from "path";
+import yaml from "js-yaml";
 
 const argv = process.argv.slice(2);
 
@@ -80,6 +83,83 @@ await build({
   jsxFactory: "createElement",
   jsxFragment: "Fragment",
   define,
+  plugins: [
+    {
+      name: "topic-loader",
+      setup(build) {
+        build.onResolve({ filter: /topics$/ }, async (args) => {
+          let someFile = null;
+
+          function listFilesRecursively(dirPath) {
+            const files = fs
+              .readdirSync(dirPath)
+              .map((f) => path.resolve(`${dirPath}/${f}`));
+
+            const result = [];
+            for (const file of files) {
+              if (fs.statSync(file).isDirectory()) {
+                result.push(listFilesRecursively(file));
+              } else {
+                someFile = file;
+                result.push(file);
+              }
+            }
+            return result;
+          }
+
+          const files = listFilesRecursively("./topics");
+
+          return {
+            // we need to return some valid absolute path
+            path: someFile,
+            pluginData: { files },
+          };
+        });
+
+        build.onLoad({ filter: /\.yaml/ }, (args) => {
+          const topics = {};
+          let idCounter = 0;
+
+          function loadTopicsRecursively(files, parentCategoryId) {
+            let categoryId = parentCategoryId;
+
+            const categoryFile = files.find(
+              (f) => typeof f === "string" && f.endsWith("_category.yaml")
+            );
+            if (categoryFile) {
+              const category = yaml.load(fs.readFileSync(categoryFile));
+              category.id = (idCounter++).toString();
+              category.categoryId = parentCategoryId;
+              categoryId = category.id;
+              topics[category.id] = category;
+            }
+
+            for (const file of files) {
+              if (typeof file === "string") {
+                if (file.endsWith("_category.yaml")) {
+                  continue;
+                } else {
+                  let child = yaml.load(fs.readFileSync(file));
+                  child.id = (idCounter++).toString();
+                  child.categoryId = categoryId;
+                  topics[child.id] = child;
+                }
+              } else {
+                loadTopicsRecursively(file, categoryId);
+              }
+            }
+          }
+
+          loadTopicsRecursively(args.pluginData.files);
+
+          return {
+            contents: JSON.stringify(topics),
+            loader: "json",
+          };
+        });
+      },
+    },
+  ],
   // Required to remove dead-code (e.g. `if (false) { ... }`)
   minifySyntax: removeDeployCode,
 });

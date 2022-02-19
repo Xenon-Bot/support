@@ -1,8 +1,23 @@
-# ⚔️ Slshx Starter Template
+# Xenonn Support Bot
 
-This is the starter template for **Slshx**, a library for building strongly-typed
-[Discord commands](https://discord.com/developers/docs/interactions/application-commands)
-that run on [Cloudflare Workers](https://workers.cloudflare.com/), using a
-React-inspired syntax.
+This bots acts as an interactive FAQ and support bot for the [Xenon support server](https://xenon.bot/support).  
+It's hosted on Cloudflare Workers loads and uses the [Slshx](https://github.com/mrbbot/slshx) framework.
 
-See the [Slshx repository](https://github.com/mrbbot/slshx) for setup instructions.
+All the content is loaded from the `topics` directory, updating the actual code should rarely be necessary.
+
+### Contributing
+
+Each `.yaml` file should contain a single topic. Topics can bested by putting them into sub-directories and adding a `_category.yaml` file to the directory. The `_category.yaml` file acts as the top-level topic for that category.
+One category / directory should not have more than 25 topics / files (excluding the `_category.yaml`).
+
+Topics (and categories) **must** follow the following structure:
+
+```yaml
+title: Some Topic # max. 256 chars
+text: | # max. 4096 chars
+  Some test and **markdown**
+  `with line breaks`
+links: # max. 4 link
+  - name: Docs
+    url: "https://wiki.xenon.bot"
+```
