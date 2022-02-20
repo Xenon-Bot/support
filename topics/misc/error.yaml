@@ -1,8 +1,8 @@
 title: I got an error, what do I do?
-description: |
+content: |
   **Read the error carefully** and think about what it says, the errors are written as clearly as possible and should be easy to understand. 
   We cannot write them any clearer for you, so please do not just send us a message of the error.
 
   If it says you have reached a limit **such as the 48 hour role limit**, we usually cannot do anything about them, so please just wait for the limit to expire or consider doing what it suggests.
 
-  If you got an **Unexpected Error** please try again later and open an issue on [Github](https://github.com/Xenon-Bot/support) if the issue persists.
+  If you got an **Unexpected Error** please try again later and open an issue on [Github](<https://github.com/Xenon-Bot/support>) if the issue persists.

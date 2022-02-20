@@ -1,0 +1,12 @@
+title: What are the perks of Xenon Premium?
+content: |
+  In addition to backing up roles, channels and server settings using Xenon, premium allows you to **save messages, bans, role assignments and nicknames**. Each tier can save a different count of messages per channel. 
+
+  Xenon Premium also allows you to have **more backups and keep more automatic backups** per server. In addition to these you can also use premium to **synchronize messages** between multiple channels or **synchronize bans and role assignments** between multiple servers.
+
+  You can find a detailed list of perks for each tier on our [Website](<https://xenon.bot/premium>).
+links:
+  - name: Website
+    url: https://xenon.bot/premium
+  - name: Buy Premium
+    url: https://www.patreon.com/join/merlinfuchs

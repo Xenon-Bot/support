@@ -1,0 +1,13 @@
+title: How to activate Xenon Premium after buying it?
+content: |
+  After buying Xenon Premium on Patreon please join our [Discord server](<https://xenon.bot/discord>) and connect your Discord account to Patreon in your [profile settings at Patreon](<https://www.patreon.com/settings/apps>). 
+
+  You should now be able to see a channel called #patrons-info on our Discord server. This channel contains information on how to invite and use Xenon Premium. There is also a #support channel dedicated to Xenon Premium users.
+
+  If you still don't see the channel please try to disconnect and reconnect your Discord account in your [profile settings at Patreon](<https://www.patreon.com/settings/apps>).
+  If this doesn't help and you aren't able to access the premium features please write us a message on Patreon or send an email to `contact@xenon.bot`.
+links:
+  - name: Profile Settings
+    url: https://www.patreon.com/settings/apps
+  - name: Discord Server,
+    url: https://xenon.bot/discord

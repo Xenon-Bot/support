@@ -1,6 +1,8 @@
 title: Slash Commands don't show up
 subtitle: I received "Seems like your tried to use Xenon with Slash Commands"
-image: "https://i.imgur.com/pwptkdqh.jpg"
-description: |
+content: |
   Make sure you have actually invited Xenon and that you have **Slash Commands enabled** in your Discord settings. This setting can be found in the "Text & Images" category.
   If commands still don't show up for you, try to restart your Discord client and check for updates in the App Store.
+
+  https://imgur.com/a/EvBbTEK
+  https://imgur.com/a/6ElYcQq

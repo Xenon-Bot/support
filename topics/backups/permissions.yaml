@@ -1,1 +1,5 @@
 title: Who can create and load backups?
+content: |
+  Backups can be created by members with administrator permissions by default. Loading a backup requires you to be the owner of the server.
+
+  The server owner can change this using the `/settings permissions` command.

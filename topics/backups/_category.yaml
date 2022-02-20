@@ -1,6 +1,7 @@
 title: Server Backups
 subtitle: Topics related to server backups
-description: |
+position: 0
+content: |
   Backups are used to **save or duplicate your server**. 
   They are linked to the user that created it, but not limited to a server. That means you can use backups to move, or duplicate a server.
 

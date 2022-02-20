@@ -1,5 +1,5 @@
 title: How do I create or load a backup?
-description: |
+content: |
   Use the `/backup create` command to create a backup of your server. 
   You need administrator permissions to create a backup by default.
 

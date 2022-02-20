@@ -1,11 +1,12 @@
 title: Server Templates
 subtitle: Topics related to server templates
-description: |
+position: 1
+content: |
   Xenon gives you access to hundreds of free templates. In contrast to backups, templates are public and can be used by everyone.
 
   Click the button bellow to find a list of server templates.
 links:
   - name: Template List
-    url: "https://xenon.bot/support"
+    url: "https://xenon.bot/templates"
   - name: Wiki
     url: "https://wiki.xenon.bot/en/backups"

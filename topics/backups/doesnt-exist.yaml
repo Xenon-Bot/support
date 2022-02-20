@@ -1,1 +1,6 @@
-title: The bot says my backup doesn't exists
+title: The bot says my backup doesn't exist
+content: |
+  Make sure you created the backup on your **current account**, backups are linked to their creator. Backups can't be tranferred between Discord accounts.
+  If the backup doesn't appear in the `/backup list` command then it doesn't exist.
+
+  It is also common that people accidently copy their backup ID incorrectly, please double check, especially the difference between an `l` (L character) and a `1` (number one), if possible, copy and paste the ID.

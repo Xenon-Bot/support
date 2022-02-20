@@ -8,7 +8,7 @@ const handler = createHandler({
   applicationSecret: SLSHX_APPLICATION_SECRET,
   testServerId: SLSHX_TEST_SERVER_ID,
   // Add your commands here
-  commands: { help },
+  commands: { help, faq: help, support: help },
 });
 
 export default { fetch: handler };

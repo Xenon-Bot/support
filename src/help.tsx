@@ -10,15 +10,14 @@ import {
   Select,
   Option,
   MessageResponse,
-  Embed,
 } from "slshx";
 
 interface Topic {
   title: string;
   subtitle?: string;
-  description: string;
+  position?: number;
+  content: string;
   links?: { name: string; url: string }[];
-  image?: string;
 
   id: string;
   categoryId?: string;
@@ -34,20 +33,23 @@ function messageForTopic(
   update: boolean,
   ephemeral: boolean,
   topicSelect: string,
-  homeButton: string
+  backButton: string
 ): MessageResponse {
   const children = Object.values(topics).filter(
     (child) => child.categoryId === topic.id
   );
+  children.sort((a, b) => ((a.position || 0) > (b.position || 0) ? 1 : 0));
 
   return (
     <Message update={update} ephemeral={ephemeral}>
-      <Embed title={topic.title} color={0x478fce} image={topic.image}>
-        {topic.description}
-      </Embed>
+      {`
+**${topic.title}**
+
+${topic.content}
+      `}
       <Row>
-        <Button id={homeButton} primary>
-          Go Home
+        <Button id={backButton + (topic.categoryId || "")} emoji="⬅">
+          Back
         </Button>
         {(topic.links || []).map((link) => (
           <Button url={link.url}>{link.name}</Button>
@@ -80,19 +82,20 @@ function initialMessage(
   const topLevelTopics = Object.values(topics).filter(
     (topic) => !topic.categoryId
   );
+  topLevelTopics.sort((a, b) =>
+    (a.position || 0) > (b.position || 0) ? 1 : -1
+  );
 
   return (
     <Message ephemeral={ephemeral} update={update}>
-      <Embed title="Xenon Help Center" color={0x478fce}>
-        {`
-        Welcome to the Xenon Help Center! 
-        
-        This is an **interactive FAQ** where you can find answers to common questions about Xenon. 
-        Use the Select Menu below to navigate through the FAQ. You can come back to this message at any point by clicking the "Home" button.
-        
-        *If you can't find the answer to your question please open an issue or pull request on [Github](https://github.com/Xenon-Bot/support).*
-        `}
-      </Embed>
+      {`
+Welcome to the **Xenon Help Center**! 
+
+This is an **interactive FAQ** where you can find answers to common questions about Xenon. 
+Use the Select Menu below to navigate through the FAQ. You go back to the previous by clicking the "Back" button.
+
+*If you can't find the answer to your question please open an issue or pull request on [Github](https://github.com/Xenon-Bot/support).*
+      `}
       <Select id={topicSelect} min={1} max={1} placeholder="Select a topic ...">
         {topLevelTopics.map((topic) => (
           <Option value={topic.id} description={topic.subtitle}>
@@ -115,16 +118,27 @@ export function help(): CommandHandler<Env> {
   useDescription("Get support for the Xenon Bot");
 
   const topicSelect: string = useSelectMenu((interaction) => {
+    // only update if the current message is ephemeral
+    const update =
+      interaction.message.flags !== undefined &&
+      (interaction.message.flags & 64) === 64;
+
     const topic = topics[interaction.data.values[0]];
     if (topic) {
-      return messageForTopic(topic, true, true, topicSelect, homeButton);
+      return messageForTopic(topic, update, true, topicSelect, backButton);
     } else {
       return <Message>Unknown topic :(</Message>;
     }
   });
 
-  const homeButton = useButton(() => {
-    return initialMessage(true, true, topicSelect, staticMenuButton);
+  const backButton: string = useButton((interaction) => {
+    const topicId = interaction.data.custom_id.substring(backButton.length);
+    const topic = topics[topicId];
+    if (topic) {
+      return messageForTopic(topic, true, true, topicSelect, backButton);
+    } else {
+      return initialMessage(true, true, topicSelect, staticMenuButton);
+    }
   });
 
   const staticMenuButton = useButton(() => {
