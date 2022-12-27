@@ -1,4 +1,4 @@
-# Xenonn Support Bot
+# Xenon Support Bot
 
 This bots acts as an interactive FAQ and support bot for the [Xenon support server](https://xenon.bot/support).  
 It's hosted on Cloudflare Workers and uses the [Slshx](https://github.com/mrbbot/slshx) framework.
