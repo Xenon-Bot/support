@@ -1,12 +1,12 @@
 title: Why did I get charged twice?
 content: |
   Xenon uses Patreon for providing premium services and therefore, all premium subscribers are charged on the **__1ST OF EVERY MONTH__**.
-  
+
   __MULTIPLE WARNINGS__ regarding Patreon's **[charge upfront billing](<https://support.patreon.com/hc/en-us/articles/210291283-How-does-charge-upfront-billing-work>)** are provided before confirming your premium purchase.
-  
+
   For refunds, please check out our [Refund Policy](<https://xenon.bot/terms>) for more information.
- 
- links:
+
+links:
   - name: Upfront Billing
     url: https://support.patreon.com/hc/en-us/articles/210291283-How-does-charge-upfront-billing-work
   - name: Refund Policy
