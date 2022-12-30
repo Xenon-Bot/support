@@ -86,15 +86,15 @@ function initialMessage(
     (a.position || 0) > (b.position || 0) ? 1 : -1
   );
 
+  // *If you can't find the answer to your question please open an issue on [Github](https://github.com/Xenon-Bot/support).*
+
   return (
     <Message ephemeral={ephemeral} update={update}>
       {`
 Welcome to the **Xenon Help Center**! 
 
 This is an **interactive FAQ** where you can find answers to common questions about Xenon. 
-Use the Select Menu below to navigate through the FAQ. You go back to the previous by clicking the "Back" button.
-
-*If you can't find the answer to your question please open an issue or pull request on [Github](https://github.com/Xenon-Bot/support).*
+Use the Select Menu below to navigate through the FAQ. You can go back to the previous topic by clicking the "Back" button.
       `}
       <Select id={topicSelect} min={1} max={1} placeholder="Select a topic ...">
         {topLevelTopics.map((topic) => (
@@ -132,12 +132,21 @@ export function help(): CommandHandler<Env> {
   });
 
   const backButton: string = useButton((interaction) => {
+    function isAdmin() {
+      return (BigInt(interaction.member?.permissions || 0) & 8n) === 8n;
+    }
+
     const topicId = interaction.data.custom_id.substring(backButton.length);
     const topic = topics[topicId];
     if (topic) {
       return messageForTopic(topic, true, true, topicSelect, backButton);
     } else {
-      return initialMessage(true, true, topicSelect, staticMenuButton);
+      return initialMessage(
+        true,
+        true,
+        topicSelect,
+        isAdmin() ? staticMenuButton : undefined
+      );
     }
   });
 
