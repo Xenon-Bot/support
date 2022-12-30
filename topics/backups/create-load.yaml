@@ -1,9 +1,9 @@
 title: How do I create or load a backup?
 content: |
-  Use the `/backup create` command to create a backup of your server. 
+  Use the </backup create:825087171806625910>  command to create a backup of your server. 
   You need administrator permissions to create a backup by default.
 
-  Use the `/backup load backup_id: your-id` command with one of your backup ids to load a backup on your server. To find the backup id you can use the `/backup list` command. 
+  Use the </backup load:825087171806625910> backup_id: your-id` command with one of your backup ids to load a backup on your server. To find the backup id you can use the `</backup list:825087171806625910>  command. 
   You need to be the server owner to load a backup by default.
 links:
   - name: Wiki

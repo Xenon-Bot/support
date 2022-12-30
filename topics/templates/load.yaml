@@ -1,7 +1,7 @@
 title: How do I load a template?
 content: |
   You can find templates at [xenon.bot/templates](<https://xenon.bot/templates>). 
-  Either click on "Create New Server" to create a new server from the template or [invite Xenon](<https://xenon.bot/invite>) and use the displayed command to load the template on an existing server.
+  Either click on "Create New Server" to create a new server from the template or [invite Xenon](<https://xenon.bot/invite>) and use the displayed </template load:825087171806625903> command to load the template on an existing server.
 
   You need to be the server owner to load a template by default.
 links:
